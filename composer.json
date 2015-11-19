@@ -1,6 +1,14 @@
 {
     "name": "vonalbert/silex-modules",
     "description": "Modular bootstrap library for the silex framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alberto Avon",
+            "email": "alberto.avon@gmail.com"
+        }
+    ],
     "require": {
         "php": ">=5.3.0",
         "silex/silex": "1.*"
