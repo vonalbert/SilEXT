@@ -7,11 +7,11 @@ Just add ```vonalbert/silext``` to your ```composer.json``` and register the req
 ## Features
 
 ### Modularity
-To enable the modules feature you only need to register the ```SilexModules\Provider\ModularityServiceProvider``` service provider
+To enable the modules feature you only need to register the ```Vonalbert\Silext\Provider\ModularityServiceProvider``` service provider
 and use the ```modules``` service to register the modules objects
 
 ```php
-$app->register(new \SilexModules\Provider\ModulesServiceProvider);
+$app->register(new \Vonalbert\Silext\Provider\ModulesServiceProvider);
 $app['modules']->add(new ModuleA);
 $app['modules']->addModules([
     new ModuleB('/route-prefix-b'),
@@ -20,7 +20,7 @@ $app['modules']->addModules([
 ]);
 ```
 
-A class to recognized as module must extend the ```SilexModules\Module``` abstract class that require the
+A class to recognized as module must extend the ```Vonalbert\Silext\Module``` abstract class that require the
 implementation of the abstract methods ```setRoutes``` and ```bootstrap```
 ```php
 abstract protected function setRoutes(ControllerCollection $router);
