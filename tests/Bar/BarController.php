@@ -1,6 +1,6 @@
 <?php
 
-namespace SilexModules\Tests\Bar;
+namespace Vonalbert\Silext\Tests\Bar;
 
 use Silex\Application;
 

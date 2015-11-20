@@ -1,10 +1,10 @@
 <?php
 
-namespace SilexModules\Tests\Bar;
+namespace Vonalbert\Silext\Tests\Bar;
 
 use Silex\Application;
 use Silex\ControllerCollection;
-use SilexModules\Module;
+use Vonalbert\Silext\Module;
 
 /**
  * @author Alberto Avon <alberto.avon@gmail.com>
@@ -19,7 +19,7 @@ class BarModule extends Module
 
     protected function setRoutes(ControllerCollection $router)
     {
-        $router->get('/', 'SilexModules\Tests\Bar\BarController::testAction');
+        $router->get('/', 'Vonalbert\Silext\Tests\Bar\BarController::testAction');
     }
 
 }

@@ -6,11 +6,12 @@ $app = new \Silex\Application([
     'debug' => true
 ]);
 
-$app->register(new \SilexModules\Provider\ModulesServiceProvider([
-    new SilexModules\Tests\Foo\FooModule('')
-]));
+$app->register(new \Vonalbert\Silext\Provider\ModularityServiceProvider);
 
-$app['modules']->add(new SilexModules\Tests\Bar\BarModule('bar'));
+$app['modules']->addModules([
+    new Vonalbert\Silext\Tests\Foo\FooModule,           // No route prefix for this module
+    new Vonalbert\Silext\Tests\Bar\BarModule('bar')     // All routes of this module have this pattern /bar/*
+]);
 
 if (isset($app['module'])) {
     // This code won't be executed: the 'module' service is not manually set in

@@ -1,6 +1,6 @@
 <?php
 
-namespace SilexModules;
+namespace Vonalbert\Silext;
 
 use Silex\Application;
 use Silex\ControllerCollection;

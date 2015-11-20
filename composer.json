@@ -1,7 +1,7 @@
 {
-    "name": "vonalbert/silex-modules",
-    "description": "Modular bootstrap library for the silex framework",
-    "type": "library",
+    "name": "vonalbert/silext",
+    "description": "Extensions for the silex framework",
+    "keywords": ["microframework", "silex", "module", "controller"],
     "license": "MIT",
     "authors": [
         {
@@ -15,12 +15,12 @@
     },
     "autoload": {
         "psr-4": {
-            "SilexModules\\": "src/"
+            "Vonalbert\\Silext\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SilexModules\\Tests\\": "tests/"
+            "Vonalbert\\Silext\\Tests\\": "tests/"
         }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace SilexModules;
+namespace Vonalbert\Silext;
 
 use Silex\Application;
 
@@ -23,12 +23,10 @@ class ModulesRegistry
 
     /**
      * @param Application $app
-     * @param Module[] $modules
      */
-    public function __construct(Application $app, array $modules = [])
+    public function __construct(Application $app)
     {
         $this->app = $app;
-        $this->addModules($modules);
     }
 
     /**
