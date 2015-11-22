@@ -12,16 +12,19 @@ use Silex\ControllerProviderInterface;
 abstract class Module implements ControllerProviderInterface
 {
 
-    /** @var string */
-    protected $prefix;
+    /**
+     * @var Module
+     */
+    private static $current;
 
     /**
-     * @param string $prefix    The route prefix used when registering the
-     *                          module
+     * Get the currently active module instance, null if none
+     * 
+     * @return Module|null
      */
-    final public function __construct($prefix = '/')
+    public static function getCurrent()
     {
-        $this->setPrefix($prefix);
+        return self::$current;
     }
 
     /**
@@ -59,32 +62,22 @@ abstract class Module implements ControllerProviderInterface
 
         // Register a middleware for the module's controllers collection.
         // This middleware will register the services at the module startup
+        $previous = null;
         $module = $this;
-        $controllers->before(function() use($module, $app) {
+        
+        $controllers->before(function() use($module, $app, &$previous) {
+            // Start the module and store the currently active
+            $previous = self::getCurrent();
+            self::$current = $module;
             $module->bootstrap($app);
+        });
+        
+        $controllers->after(function() use(&$previous) {
+            // End the module code and restore the previous module
+            self::$current = $previous;
         });
 
         return $controllers;
     }
-    
-    /**
-     * Get the route prefix
-     * 
-     * @return string
-     */
-    public function getPrefix()
-    {
-        return $this->prefix;
-    }
 
-    /**
-     * Set route prefix used at the module's registration
-     * 
-     * @param string $prefix
-     */
-    public function setPrefix($prefix)
-    {
-        $this->prefix = $prefix;
-    }
-    
 }
